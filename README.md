@@ -11,7 +11,11 @@ This version of mplleaflet is therefore compatible with Geopandas 0.7.0 and pypr
 If anyone is using this - apologies for butchering the original folder structure of the jwass/mplleaflet repo, I couldn't figure out how to work with submodules so I just incorporated mplexporter under mplleaflet directly.
 Feel free to just take the edits in the leaflet_renderer.py script: I replaced the old PROJ objects with CRS objects and the old transform method with updated transformer.transform object. I also changed the format of crs and crs_out to "epsg:..." instead of {"init":"epsg:..."}
 
+A warning may come up: proj_create_from_database: Cannot find proj.db but this doesn't appear to affect the plot.
 
+
+Original readme below:
+------
 # mplleaflet
 
 mplleaflet is a Python library that converts a [matplotlib](http://matplotlib.org) plot into a webpage
