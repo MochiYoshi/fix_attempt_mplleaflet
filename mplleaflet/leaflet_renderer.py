@@ -19,13 +19,21 @@ class LeafletRenderer(Renderer):
             raise ValueError('crs and epsg cannot both be specified')
 
         if epsg is not None:
-            crs = _crs_from_epsg(epsg)
+            crs = 'epsg:{}'.format(epsg)
         if crs is not None:
             import pyproj
-            crs_out = _crs_from_epsg(4326)
-            proj_in = pyproj.Proj(preserve_units=True, **crs)
-            proj_out = pyproj.Proj(preserve_units=True, **crs_out)
-            self.transformfunc = partial(pyproj.transform, proj_in, proj_out)
+            crs_out = 'epsg:{}'.format(4326)
+
+            # old code for pyproj 1.9.6 or below
+            # proj_in = pyproj.Proj(crs)
+            # proj_out = pyproj.Proj(crs_out)
+            # self.transformfunc = partial(pyproj.transform, proj_in, proj_out)
+
+            # new code for pyproj >= 2.0.0
+            proj_in = pyproj.CRS(crs)
+            proj_out = pyproj.CRS(crs_out)
+            transformer = pyproj.Transformer.from_crs(proj_in, proj_out, always_xy=True)
+            self.transformfunc = partial(transformer.transform)
         else:
             self.transformfunc = None
 
@@ -148,8 +156,8 @@ class LeafletRenderer(Renderer):
         """ Don't draw the text for now, but don't crash """
         pass
 
-
-def _crs_from_epsg(epsg):
-    epsgstr = 'epsg:{}'.format(epsg)
-    crs = {'init': epsgstr, 'no_defs': True}
-    return crs
+# old no longer used as replaced directly in leafletrenderer class initialisation
+# def _crs_from_epsg(epsg):
+#     epsgstr = 'epsg:{}'.format(epsg)
+#     crs = {'init': epsgstr, 'no_defs': True}
+#     return crs
