@@ -1,9 +1,8 @@
 [THIS IS AN ATTEMPT AT MAKING MPLLEAFLET COMPATIBLE WITH PYPROJ>=2.0.0, WHICH IS REQUIRED BY GEOPANDAS>=0.7.0]
 
-If you have pyproj>=2.0.0 (e.g. because of Geopandas 0.7.0), then the optional parameters 'crs' and 'epsg' in the mplleaflet.show() method no longer work under the old '{init: 'epsg:4326'} convention.
+If you have pyproj>=2.0.0 (e.g. because of Geopandas 0.7.0), then the optional parameters 'crs' and 'epsg' in the mplleaflet.show() method do not work.
 Even when you change crs={'init':'epsg:4326'} into the new suggested format, i.e. crs = 'epsg:4326', mplleaflet cannot handle this.
-One workaround is to downground pyproj to 1.9.6 (but then geopandas 0.7.0 will not work), or if you only have Points then you can convert your points to EPSG4326 first and use mplleaflet.show() without a crs/epsg optional parameter.
-I was working with Polygons in a different coordinate system however, and could not figure out how to convert polygons into epsg 4326 with .to_crs() in geopandas. 
+One workaround is to downground pyproj to 1.9.6 (but then geopandas 0.7.0 will not work), or if you only have Points then you can convert your points to EPSG4326 first and use mplleaflet.show() without providing a crs/epsg optional parameter, just use the default crs (epsg:4326). I was working with Polygons in a different coordinate system however, and could not figure out how to convert polygons into epsg 4326 with .to_crs() in geopandas. 
 
 This version of mplleaflet is therefore compatible with Geopandas 0.7.0 and pyproj >= 2.0.0, provided you use the new format, e.g. crs = 'epsg:4326' instead of the old {'init':'epsg:4326'} - in both the mplleaflet.show(crs=...) parameter AND in any occurences of gpd.GeoDataFrame.to_crs(...) in your program.
 [IMPORTANT NOTE] - This is NOT backwards compatible with pyproj 1.9.6.
