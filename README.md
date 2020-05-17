@@ -1,4 +1,4 @@
-[THIS IS AN ATTEMPT AT MAKING MPLLEAFLET COMPATIBLE WITH PYPROJ>=2.0.0, WHICH IS REQUIRED BY GEOPANDAS>=0.7.0]
+[THIS IS AN ATTEMPT TO MAKE MPLLEAFLET (https://github.com/jwass/mplleaflet) COMPATIBLE WITH PYPROJ>=2.0.0, WHICH IS REQUIRED BY GEOPANDAS>=0.7.0]
 
 If you have pyproj>=2.0.0 (e.g. because of Geopandas 0.7.0), then the optional parameters 'crs' and 'epsg' in the mplleaflet.show() method do not work.
 Even when you change crs={'init':'epsg:4326'} into the new suggested format, i.e. crs = 'epsg:4326', mplleaflet cannot handle this.
