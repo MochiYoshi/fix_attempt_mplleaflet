@@ -8,14 +8,14 @@ with open('AUTHORS.md') as f:
 
 description = "Convert Matplotlib plots into Leaflet web maps"
 long_description = description + "\n\n" + authors
-NAME = "mplleaflet_new"
+NAME = "mplleaflet"
 AUTHOR = "Jacob Wasserman"
 AUTHOR_EMAIL = "jwasserman@gmail.com"
-MAINTAINER = "Jacob Wasserman"
-MAINTAINER_EMAIL = "jwasserman@gmail.com"
-DOWNLOAD_URL = 'http://github.com/jwass/mplleaflet'
+MAINTAINER = "Ben Mochi"
+MAINTAINER_EMAIL = "na"
+DOWNLOAD_URL ='http://github.com/MochiYoshi/fix_attempt_mplleaflet.git'
 LICENSE = 'BSD 3-clause'
-VERSION = '0.0.5'
+VERSION = '9.0.0.1'
 
 setup(
     name=NAME,
