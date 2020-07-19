@@ -164,7 +164,7 @@ def display(fig=None, closefig=True, **kwargs):
            )
     return HTML(iframe_html)
 
-def show(fig=None, path='_map.html', **kwargs):
+def show(fig=None, path='_map.html', openfile=True, **kwargs):
     """
     Convert a Matplotlib Figure to a Leaflet map. Open in a browser
 
@@ -182,4 +182,5 @@ def show(fig=None, path='_map.html', **kwargs):
     fullpath = os.path.abspath(path)
     with open(fullpath, 'w') as f:
         save_html(fig, fileobj=f, **kwargs)
-    webbrowser.open('file://' + fullpath)
+    if openfile:
+      webbrowser.open('file://' + fullpath)
