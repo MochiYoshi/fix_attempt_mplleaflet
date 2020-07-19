@@ -8,7 +8,7 @@ with open('AUTHORS.md') as f:
 
 description = "Convert Matplotlib plots into Leaflet web maps"
 long_description = description + "\n\n" + authors
-NAME = "mplleaflet"
+NAME = "mplleaflet_new"
 AUTHOR = "Jacob Wasserman"
 AUTHOR_EMAIL = "jwasserman@gmail.com"
 MAINTAINER = "Jacob Wasserman"
