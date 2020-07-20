@@ -25,7 +25,7 @@ env = Environment(loader=PackageLoader('mplleaflet', 'templates'),
                   trim_blocks=True, lstrip_blocks=True)
 
 def fig_to_html(fig=None, template='base.html', tiles=None, crs=None,
-                epsg=None, embed_links=False, float_precision=6):
+                epsg=None, embed_links=False, float_precision=6, openfile=None):
     """
     Convert a Matplotlib Figure to a Leaflet map
 
